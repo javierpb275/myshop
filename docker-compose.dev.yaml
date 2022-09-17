@@ -1,0 +1,62 @@
+version: "3.8"
+services:
+  postgres-db-service:
+    image: postgres
+    container_name: postgres-db-container
+    restart: always
+    ports:
+      - "54320:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+  pgadmin4-service:
+    image: dpage/pgadmin4
+    container_name: pgadmin4-container
+    restart: always
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: postgres@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: postgres
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+  myshop-server-service:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    container_name: myshop-server-container
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server:/usr/src/app/
+    env_file: 
+      - ./server/src/config/.env
+      - ./server/src/config/.flaskenv
+    depends_on:
+      - postgres-db-service
+  myshop-client-service:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: myshop-client-container
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client/node_modules:/app/node_modules
+      - ./client/src:/app/src
+      - ./client/public:/app/public
+    env_file: 
+      - ./client/src/config/.env
+    depends_on:
+      - myshop-server-service
+    command: npm start
+    stdin_open: true
+    restart: always
+    
+
+volumes:
+  local_pgdata:
+  pgadmin-data:
+    
