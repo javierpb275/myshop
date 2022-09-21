@@ -7,6 +7,7 @@ from flask_jwt_extended import JWTManager
 from datetime import timedelta
 from config.blocklist import BLOCKLIST
 from flask_cors import CORS
+from resources.user_resource import Profile, UserSignIn, TokenRefresh, UserSignOut, UserSignUp
 
 # app configuration
 app = Flask(__name__)
@@ -74,13 +75,12 @@ def token_not_fresh_callback(error):
     }}), 401
 
 
-# routes
-@app.route('/api', methods=['GET'])
-def ping():
-    return jsonify({'error': False, 'data': {
-        'message': 'HELLO WORLD!',
-    }}), 200
-
+# user routes
+api.add_resource(UserSignUp, '/api/users/signup')
+api.add_resource(UserSignIn, '/api/users/signin')
+api.add_resource(UserSignOut, '/api/users/signout')
+api.add_resource(TokenRefresh, '/api/users/refresh')
+api.add_resource(Profile, '/api/users/me')
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
