@@ -31,7 +31,7 @@ services:
       - "5000:5000"
     volumes:
       - ./server:/usr/src/app/
-    env_file: 
+    env_file:
       - ./server/src/config/.env
       - ./server/src/config/.flaskenv
     depends_on:
@@ -44,19 +44,17 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./client/node_modules:/app/node_modules
-      - ./client/src:/app/src
-      - ./client/public:/app/public
-    env_file: 
+      - ./client:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
       - ./client/src/config/.env
     depends_on:
       - myshop-server-service
     command: npm start
     stdin_open: true
     restart: always
-    
+
 
 volumes:
   local_pgdata:
   pgadmin-data:
-    
