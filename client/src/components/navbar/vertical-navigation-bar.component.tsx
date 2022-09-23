@@ -9,8 +9,9 @@ const VerticalNavbarComponent: React.FunctionComponent<
     <header>
       <nav>
         <ul>
-          <li>Home</li>
-          <li>Contact</li>
+          <li>Women</li>
+          <li>Men</li>
+          <li>Unisex</li>
         </ul>
       </nav>
     </header>
