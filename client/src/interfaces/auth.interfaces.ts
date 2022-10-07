@@ -1,3 +1,4 @@
+//USER
 export interface IUser {
   user_id: number;
   username: string;
@@ -11,30 +12,7 @@ export interface IUser {
   modified_at: string;
 }
 
-export interface IResponse {
-  error: boolean;
-  data: IDataError | IDataSignIn | IDataSignUp;
-}
-
-export interface IDataError {
-  message: string;
-  error?: string;
-}
-
-export interface IDataSignIn {
-  user: IUser;
-  access_token: string;
-  refresh_token: string;
-  message: string;
-}
-
-export interface IDataSignUp {
-  user: IUser;
-  access_token: string;
-  refresh_token: string;
-  message: string;
-}
-
+//AUTH CONTEXT
 export interface IAuthContext {
   state: IAuthState;
   actions: IAuthAction;
