@@ -96,6 +96,7 @@ export interface IReturnDataGetProfile {
 export interface IResponse {
   error: boolean;
   data:
+    | any
     | IReturnDataError
     | IReturnDataSignIn
     | IReturnDataSignUp
