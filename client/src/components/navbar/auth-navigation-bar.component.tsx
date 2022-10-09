@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useAuthActions, useAuthState } from "../../store/contexts/authContext";
 
 export interface IAuthNavbarComponentProps {}
 
 const AuthNavbarComponent: React.FunctionComponent<
   IAuthNavbarComponentProps
 > = (props) => {
-  const [isAuthorized, setIsAuthorized] = useState(true);
+  const { user } = useAuthState();
+  const { logout } = useAuthActions();
   return (
     <header>
       <nav>
         <ul>
-          {isAuthorized ? (
-            <li onClick={() => setIsAuthorized(false)}>Sign Out</li>
+          {user ? (
+            <li onClick={logout}>Sign Out</li>
           ) : (
             <Link to="/signin">
               <li>Sign In</li>
