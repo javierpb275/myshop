@@ -1,4 +1,4 @@
-import { IUser } from "../interfaces/auth.interfaces";
+import { IUser } from "../interfaces/user.interface";
 
 export type BodyType = string | Object;
 
@@ -53,6 +53,7 @@ export interface IBodySignOut {
 export interface IBodyDeleteProfile {
   refresh_token: string;
 }
+
 //RETURN DATA TYPES:
 export interface IReturnDataError {
   message: string;

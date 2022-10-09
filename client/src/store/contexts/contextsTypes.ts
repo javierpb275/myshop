@@ -1,16 +1,5 @@
-//USER
-export interface IUser {
-  user_id: number;
-  username: string;
-  email: string;
-  first_name?: string;
-  last_name?: string;
-  avatar?: string;
-  phone?: string;
-  address?: string;
-  created_at: string;
-  modified_at: string;
-}
+import { IUser } from "../../interfaces/user.interface";
+import { IBodySignIn, IBodySignUp } from "../../services/serviceTypes";
 
 //AUTH CONTEXT
 export interface IAuthContext {
@@ -26,7 +15,8 @@ export interface IAuthState {
 }
 
 export interface IAuthAction {
-  login: (email: string, password: string) => void;
+  register: (user: IBodySignUp) => void;
+  login: (user: IBodySignIn) => void;
   logout: () => void;
 }
 
