@@ -3,6 +3,7 @@ import { FetchService } from "./fetchService";
 import {
   IBodySignIn,
   IBodySignUp,
+  IPayload,
   IResponse,
   IReturnDataSignIn,
   IReturnDataSignUp,
@@ -145,6 +146,77 @@ export class AuthService {
       return response;
     } catch (err: any) {
       return err;
+    }
+  }
+
+  //CHECK IF TOKEN IS ABOUT TO EXPIRE AND MUST BE REFRESHED-----------
+  static checkIfRefreshToken(expiration: number): boolean {
+    const maxExpirationMinutesBeforeRefresh: number = 10;
+    const expirationInMs: number = expiration * 1000;
+    const expirationDate: any = new Date(expirationInMs);
+    const currentDate: any = new Date();
+    const renew: boolean =
+      (expirationDate - currentDate) / 1000 / 60 <
+      maxExpirationMinutesBeforeRefresh;
+    return renew;
+  }
+
+  //GET PAYLOAD FROM TOKEN-------------------------------------
+  static getPayload(token: string): IPayload | undefined | null {
+    const buffer = Buffer.from(token.split(".")[1], "base64");
+    const payload = JSON.parse(buffer.toString("base64")) as IPayload;
+    if (
+      !payload ||
+      !payload.exp ||
+      !payload.iat ||
+      !payload.jti ||
+      !payload.nbf ||
+      !payload.sub ||
+      !payload.type
+    ) {
+      return null;
+    }
+    return payload;
+  }
+
+  // CHECK AUTHENTICATION-----------------------------
+  static async checkAuthentication(): Promise<boolean> {
+    let access_token = localStorage.getItem(Tokens.ACCESS_TOKEN);
+    let refresh_token = localStorage.getItem(Tokens.REFRESH_TOKEN);
+    if (!access_token || !refresh_token) {
+      AuthService.removeTokens();
+      return false;
+    }
+    const access_token_payload = AuthService.getPayload(access_token);
+    const refresh_token_payload = AuthService.getPayload(refresh_token);
+    if (!access_token_payload || !refresh_token_payload) {
+      AuthService.removeTokens();
+      return false;
+    }
+    if (
+      refresh_token_payload.type !== "refresh" ||
+      access_token_payload.type !== "access"
+    ) {
+      AuthService.removeTokens();
+      return false;
+    }
+    const tokenMustBeRefreshed = AuthService.checkIfRefreshToken(
+      access_token_payload.exp
+    );
+    try {
+      if (tokenMustBeRefreshed) {
+        const tokenRefreshResponse = await AuthService.tokenRefresh(
+          refresh_token
+        );
+        if (tokenRefreshResponse.error) {
+          AuthService.removeTokens();
+          return false;
+        }
+      }
+      return true;
+    } catch (err) {
+      AuthService.removeTokens();
+      return false;
     }
   }
 }
