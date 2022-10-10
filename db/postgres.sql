@@ -46,16 +46,76 @@ VALUES (2, 'USER', 'paco', 'paco@gmail.com',
 'Paco', 'Rodríguez Pérez', '678901234', '123 John Doe Street, 3ºA Floor', TRUE, '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
 
 --PRODUCTS
+
+--t-shirts:
+
+--men
 INSERT INTO products(product_id, name, price, 
 image_url, 
 description, stock, discount, SKU, created_at, modified_at)
-VALUES (1, 'BEST WALKING SHOES FOR WOMEN', 50.00, 
+VALUES (1, 'Bayside Apparel Men Basic T-Shirt', 9.99,
+'./images/bayside-apparel-mens-basic-t-shirt.jpg', 
+NULL, 0, 0.00, 'ME-TS-GR-LG', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (2, 'JHK T-Shirt Men', 9.99,
+'./images/jhk-t-shirt-men.jpg', 
+NULL, 20, 10.00, 'ME-TS-YE-ME', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+--women
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (3, 'JHK T-Shirt Women', 9.99,
+'./images/jhk-t-shirt-women.jpg', 
+NULL, 20, 10.00, 'WM-TS-OR-SM', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (4, 'Nia Dacosta T-Shirt', 17.50,
+'./images/nia-dacosta-t-shirt.jpg', 
+NULL, 30, 0.00, 'WM-TS-WH-ME', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+--children
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (5, 'El Galeon Kids T-Shirt', 5.00,
+'./images/kids-t-shirt-el-galeon.jpg', 
+NULL, 40, 0.00, 'CH-TS-WH-SM', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (6, 'Thomas Little Train T-Shirt', 5.00,
+'./images/thomas-little-train-t-shirt.jpg', 
+NULL, 0, 0.00, 'CH-TS-WH-SM', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+
+
+--shoes:
+
+--men
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (7, 'Bottega Senatore Clovio Sneakers Italian Handmade Man Shoes', 100.00,
+'./images/bottega-senatore-clovio-sneakers-italian-handmade-man-shoes-high-quality-leather-shoes.jpg', 
+NULL, 0, 20.00, 'ME-SH-GY-LG', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+--women
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (8, 'Best Walking Shoes For Women', 50.00, 
 './images/best-walking-shoes-for-women.png', 
 NULL, 100, 0.00, 'WM-SH-WH-ME', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
-
+--children
 INSERT INTO products(product_id, name, price, 
 image_url, 
 description, stock, discount, SKU, created_at, modified_at)
-VALUES (2, 'BOTTEGA SENATORE CLOVIO SNEAKERS ITALIAN HANDMADE MAN SHOES HIGH QUALITY LEATHER SHOES', 100.00,
-'./images/bottega-senatore-clovio-sneakers-italian-handmade-man-shoes-high-quality-leather-shoes.jpg', 
-NULL, 0, 20.00, 'ME-SH-GR-LG', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+VALUES (9, 'Lace Up Brogues Shoe Black', 24.95,
+'./images/lace-up-brogues-shoe-black.jpg', 
+NULL, 23, 10.00, 'CH-SH-BL-SM', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (10, 'Mickey Mouse Shoes', 29.62,
+'./images/mickey-mouse-shoes.jpg', 
+NULL, 10, 0.00, 'CH-SH-PI-SM', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
