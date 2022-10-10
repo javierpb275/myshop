@@ -37,7 +37,6 @@ password, avatar, first_name, last_name, phone, address, accept_terms_conditions
 VALUES (1, 'ADMIN', 'pepe', 'pepe@gmail.com', 
 'pbkdf2:sha256:260000$TGMEL1gHzqF6SoEQ$005e36d760d78f0b3df08abdc0f757ad197b44f2f7c04c8467ab03158198c01e', 
 NULL, NULL, NULL, NULL, NULL, TRUE, '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
-
 INSERT INTO users(user_id, role, username, email, 
 password, avatar, first_name, last_name, phone, address, accept_terms_conditions, created_at, modified_at)
 VALUES (2, 'USER', 'paco', 'paco@gmail.com', 
@@ -112,10 +111,82 @@ image_url,
 description, stock, discount, SKU, created_at, modified_at)
 VALUES (9, 'Lace Up Brogues Shoe Black', 24.95,
 './images/lace-up-brogues-shoe-black.jpg', 
-NULL, 23, 10.00, 'CH-SH-BL-SM', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+NULL, 23, 10.00, 'CH-SH-BK-SM', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
 INSERT INTO products(product_id, name, price, 
 image_url, 
 description, stock, discount, SKU, created_at, modified_at)
 VALUES (10, 'Mickey Mouse Shoes', 29.62,
 './images/mickey-mouse-shoes.jpg', 
 NULL, 10, 0.00, 'CH-SH-PI-SM', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+
+--jackets:
+
+--children
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (11, 'Boy Coat Jacket Debenham', 47.43,
+'./images/boy-coats-jackets-debenhams.jpeg', 
+NULL, 50, 10.00, 'CH-JA-GR-SM', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (12, 'Coat Colegio Gamarra', 35.89,
+'./images/children-designer-coats-colegio-gamarra.jpg', 
+NULL, 40, 0.00, 'CH-JA-BK-SM', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+--women
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (13, 'Women Fall Jacket', 80.00,
+'./images/fall-jackets-amazon.png', 
+NULL, 20, 20.00, 'WM-JA-BK-LG', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (14, 'Women Iconic Australia Jacket', 70.00,
+'./images/iconic-women-coats-jackets-australia.jpg', 
+NULL, 30, 0.00, 'WM-JA-BW-LG', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+--men
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (15, 'Men Black Jacket', 50.00,
+'./images/mens-coats-jackets.jpg', 
+NULL, 40, 10.00, 'ME-JA-BK-ME', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (16, 'Winter Jacket Windcheater', 35.00,
+'./images/winter-jacket-windcheater-men.jpg', 
+NULL, 40, 0.00, 'ME-JA-BL-ME', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+
+--trousers:
+
+--children
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (17, 'Boys Cargo Pants', 25.50,
+'./images/boys-cargo-pants.jpg', 
+NULL, 30, 0.00, 'CH-TR-GR-SM', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (18, 'John Lewis Kids Plain Cargo Trousers Khaki', 35.50,
+'./images/john-lewis-kids-plain-cargo-trousers-khaki.jpg', 
+NULL, 30, 10.00, 'CH-TR-GR-SM', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+--men
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (19, 'Fjallraven Vidda Pro', 35.00,
+'./images/fjallraven-vidda-pro.jpg',
+NULL, 50, 0.00, 'ME-TR-BK-LG', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
+--women
+INSERT INTO products(product_id, name, price, 
+image_url, 
+description, stock, discount, SKU, created_at, modified_at)
+VALUES (20, 'Tailored Straight Leg Trousers Taupe', 85.00,
+'./images/tailored-straight-leg-trousers-taupe.jpg',
+NULL, 30, 20.00, 'WM-TR-BW-LG', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');

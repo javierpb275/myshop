@@ -11,7 +11,7 @@ const VerticalNavbarComponent: React.FunctionComponent<
         <ul>
           <li>Women</li>
           <li>Men</li>
-          <li>Unisex</li>
+          <li>Children</li>
         </ul>
       </nav>
     </header>
