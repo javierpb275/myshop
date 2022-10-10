@@ -146,8 +146,6 @@ const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
           type: AuthActionType.LOGIN_SUCCESSFUL,
           payload: { user: response.data.user },
         });
-        // go to the home page
-        window.location.href = "/";
       } else {
         dispatch({
           type: AuthActionType.LOGIN_FAILED,
@@ -157,7 +155,7 @@ const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
     } catch (error: Error | any) {
       dispatch({
         type: AuthActionType.LOGIN_FAILED,
-        payload: { error: error.data.message || "Register failed" },
+        payload: { error: error || "Register failed" },
       });
     }
   }, []);
@@ -173,8 +171,6 @@ const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
           type: AuthActionType.LOGIN_SUCCESSFUL,
           payload: { user: response.data.user },
         });
-        // go to the home page
-        window.location.href = "/";
       } else {
         dispatch({
           type: AuthActionType.LOGIN_FAILED,
@@ -184,7 +180,7 @@ const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
     } catch (error: Error | any) {
       dispatch({
         type: AuthActionType.LOGIN_FAILED,
-        payload: { error: error.data.message || "Login failed" },
+        payload: { error: error || "Login failed" },
       });
     }
   }, []);

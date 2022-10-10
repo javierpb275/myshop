@@ -163,8 +163,7 @@ export class AuthService {
 
   //GET PAYLOAD FROM TOKEN-------------------------------------
   static getPayload(token: string): IPayload | undefined | null {
-    const buffer = Buffer.from(token.split(".")[1], "base64");
-    const payload = JSON.parse(buffer.toString("base64")) as IPayload;
+    const payload = JSON.parse(atob(token.split(".")[1])) as IPayload;
     if (
       !payload ||
       !payload.exp ||
