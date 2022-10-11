@@ -7,6 +7,7 @@ from flask_jwt_extended import JWTManager
 from datetime import timedelta
 from config.blocklist import BLOCKLIST
 from flask_cors import CORS
+from resources.product_resource import Product, ProductList
 from resources.user_resource import Profile, UserSignIn, TokenRefresh, UserSignOut, UserSignUp
 
 # app configuration
@@ -75,12 +76,16 @@ def token_not_fresh_callback(error):
     }}), 401
 
 
-# user routes
+# users routes
 api.add_resource(UserSignUp, '/api/users/signup')
 api.add_resource(UserSignIn, '/api/users/signin')
 api.add_resource(UserSignOut, '/api/users/signout')
 api.add_resource(TokenRefresh, '/api/users/refresh')
 api.add_resource(Profile, '/api/users/me')
+
+# products routes
+api.add_resource(Product, '/api/products/<int:product_id>')
+api.add_resource(ProductList, '/api/products')
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
