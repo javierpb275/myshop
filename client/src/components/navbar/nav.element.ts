@@ -1,0 +1,60 @@
+import { FaBars } from "react-icons/fa";
+import styled from "styled-components";
+import { NavLink as Link } from "react-router-dom";
+
+export const PrimaryNav = styled.nav`
+  z-index: 14;
+  height: 50px;
+  display: flex;
+  background: #f5f5dc;
+  justify-content: space-between;
+`;
+
+export const NavOption = styled.p`
+  color: black;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1.2rem;
+  height: 100%;
+  &.active {
+    color: black;
+  }
+`;
+
+export const MenuLink = styled(Link)`
+  color: black;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1.2rem;
+  height: 100%;
+  &.active {
+    color: black;
+  }
+`;
+
+export const Hamburger = styled(FaBars)`
+  display: none;
+  color: #ffffff;
+  @media screen and (max-width: 768px) {
+    display: block;
+    font-size: 1.9rem;
+    top: 0;
+    right: 0;
+    position: absolute;
+    cursor: pointer;
+    transform: translate(-100%, 75%);
+  }
+`;
+
+export const Menu = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: -25px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;

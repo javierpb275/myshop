@@ -1,5 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {
+  PrimaryNav,
+  MenuLink,
+  Menu,
+  Hamburger,
+  NavOption,
+} from "./nav.element";
 import { useAuthActions, useAuthState } from "../../store/contexts/authContext";
 
 export interface IAuthNavbarComponentProps {}
@@ -10,21 +16,23 @@ const AuthNavbarComponent: React.FunctionComponent<
   const { user } = useAuthState();
   const { logout } = useAuthActions();
   return (
-    <header>
-      <nav>
-        <ul>
-          {user ? (
-            <li onClick={logout}>Sign Out</li>
-          ) : (
-            <Link to="/signin">
-              <li>Sign In</li>
-            </Link>
-          )}
-          <li>Favourites</li>
-          <li>Shopping bag</li>
-        </ul>
-      </nav>
-    </header>
+    <>
+      <PrimaryNav>
+        <Hamburger />
+        {user ? (
+          <Menu>
+            <NavOption onClick={logout}>Sign Out</NavOption>
+            <MenuLink to="/favourites">Favourites</MenuLink>
+            <NavOption>Shopping bag</NavOption>
+          </Menu>
+        ) : (
+          <Menu>
+            <MenuLink to="/signin">Sign In</MenuLink>
+            <NavOption>Shopping bag</NavOption>
+          </Menu>
+        )}
+      </PrimaryNav>
+    </>
   );
 };
 
