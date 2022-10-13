@@ -40,3 +40,16 @@ class ProductList(Resource):
                     "message": f"{len(products)} Products Found",
                     "products": products
                 }}, 200
+
+
+class ProductListBySku(Resource):
+
+    def get(self, sku):
+        args = request.args
+        products = [product.json() for product in ProductModel.search_by_sku(
+            args.get("page"), args.get("per_page"), args.get('sort'), sku)]
+        return {"error": False,
+                "data": {
+                    "message": f"{len(products)} Products Found",
+                    "products": products
+                }}, 200

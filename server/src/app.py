@@ -7,7 +7,7 @@ from flask_jwt_extended import JWTManager
 from datetime import timedelta
 from config.blocklist import BLOCKLIST
 from flask_cors import CORS
-from resources.product_resource import Product, ProductList
+from resources.product_resource import Product, ProductList, ProductListBySku
 from resources.user_resource import Profile, UserSignIn, TokenRefresh, UserSignOut, UserSignUp
 
 # app configuration
@@ -86,6 +86,7 @@ api.add_resource(Profile, '/api/users/me')
 # products routes
 api.add_resource(Product, '/api/products/<int:product_id>')
 api.add_resource(ProductList, '/api/products')
+api.add_resource(ProductListBySku, '/api/products/search/<string:sku>')
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)

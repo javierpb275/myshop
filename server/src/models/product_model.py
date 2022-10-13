@@ -2,6 +2,7 @@ from config.db import db
 from datetime import datetime
 from helpers.filtration_helper import FiltrationHelper
 from helpers.pagination_helper import PaginatonHelper
+from sqlalchemy import func
 
 
 class ProductModel(db.Model):
@@ -86,3 +87,9 @@ class ProductModel(db.Model):
     @classmethod
     def find_one(cls, **kwargs):
         return cls.query.filter_by(**kwargs).first()
+
+    @classmethod
+    def search_by_sku(cls, page, per_page, sort, sku):
+        page, per_page = PaginatonHelper.get_pagination(page, per_page)
+        sort = cls._get_sort(sort)
+        return cls.query.filter(func.lower(ProductModel.sku).contains(sku.lower())).order_by(sort).paginate(page, per_page, error_out=False).items
