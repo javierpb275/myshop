@@ -1,7 +1,7 @@
 class PaginatonHelper():
 
     @classmethod
-    def get_pagination(page, per_page):
+    def get_pagination(cls, page, per_page):
         if not page:
             page = 1
         if not per_page:

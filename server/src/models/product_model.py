@@ -14,18 +14,18 @@ class ProductModel(db.Model):
     description = db.Column(db.Text, nullable=True)
     stock = db.Column(db.Integer, nullable=False)
     discount = db.Column(db.Numeric(precision=2, scale=2), default=0.00)
-    SKU = db.Column(db.String(50), nullable=False)
+    sku = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now())
     modified_at = db.Column(db.DateTime, default=datetime.now())
 
-    def __init__(self, name, price, image_url, description, stock, discount, SKU, created_at, modified_at):
+    def __init__(self, name, price, image_url, description, stock, discount, sku, created_at, modified_at):
         self.name = name
         self.price = price
         self.image_url = image_url
         self.description = description
         self.stock = stock
         self.discount = discount
-        self.SKU = SKU
+        self.sku = sku
         self.created_at = created_at
         self.modified_at = modified_at
 
@@ -33,12 +33,12 @@ class ProductModel(db.Model):
         return {
             'product_id': self.product_id,
             'name': self.name,
-            'price': self.price,
+            'price': str(self.price),
             'image_url': self.image_url,
             'description': self.description,
             'stock': self.stock,
-            'discount': self.discount,
-            'SKU': self.SKU,
+            'discount': str(self.discount),
+            'sku': self.sku,
             'created_at': str(self.created_at),
             'modified_at': str(self.modified_at),
         }

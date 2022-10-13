@@ -34,7 +34,7 @@ class ProductList(Resource):
         args = request.args
         products = [product.json() for product in ProductModel.find_all(args.get("page"), args.get("per_page"), args.get('sort'), product_id=args.get("product_id"),
                                                                         name=args.get("name"), price=args.get("price"), stock=args.get("stock"),
-                                                                        discount=args.get("discount"), SKU=args.get("SKU"))]
+                                                                        discount=args.get("discount"), sku=args.get("sku"))]
         return {"error": False,
                 "data": {
                     "message": f"{len(products)} Products Found",
