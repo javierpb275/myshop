@@ -1,3 +1,4 @@
+import { IProduct } from "../interfaces/product.interface";
 import { IUser } from "../interfaces/user.interface";
 
 export type BodyType = string | Object;
@@ -23,6 +24,23 @@ export interface IPayload {
   fresh: boolean; //If the token is fresh or not
   type: string; //access | refresh
   jti: string; //Unique Identifier
+}
+
+//QUERY OBJECT INTERFACE:
+
+export interface IBasicQueryObject {
+  sort?: string;
+  per_page?: number;
+  page?: number;
+}
+
+export interface IProductQueryObject extends IBasicQueryObject {
+  product_id?: number;
+  name?: string;
+  price?: number;
+  stock?: number;
+  discount?: number;
+  sku?: string;
 }
 
 //BODY TYPES:
@@ -94,6 +112,22 @@ export interface IReturnDataGetProfile {
   refresh_token: string;
   message: string;
 }
+
+export interface IReturnDataGetProducts {
+  message: string;
+  products: IProduct[];
+}
+
+export interface IReturnDataGetProductsBySku {
+  message: string;
+  products: IProduct[];
+}
+
+export interface IReturnDataGetProductById {
+  message: string;
+  product: IProduct;
+}
+
 export interface IResponse {
   error: boolean;
   data:
@@ -104,5 +138,8 @@ export interface IResponse {
     | IReturnDataTokenRefresh
     | IReturnDataSignOut
     | IReturnDataDeleteProfile
-    | IReturnDataGetProfile;
+    | IReturnDataGetProfile
+    | IReturnDataGetProducts
+    | IReturnDataGetProductsBySku
+    | IReturnDataGetProductById;
 }

@@ -30,4 +30,22 @@ export const API_URL = {
       },
     },
   },
+  PRODUCTS: {
+    SEARCH: {
+      BY_SKU: {
+        URL: "/products/search/", // :sku (string) ?
+        METHOD: "GET",
+      },
+    },
+    GET: {
+      ALL: {
+        URL: "/products", // ?
+        METHOD: "GET",
+      },
+      BY_ID: {
+        URL: "/products/", // :id (int)
+        METHOD: "GET",
+      },
+    },
+  },
 };
