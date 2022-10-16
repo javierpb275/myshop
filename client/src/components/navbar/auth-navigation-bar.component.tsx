@@ -23,12 +23,12 @@ const AuthNavbarComponent: React.FunctionComponent<
           <Menu>
             <NavOption onClick={logout}>Sign Out</NavOption>
             <MenuLink to="/favourites">Favourites</MenuLink>
-            <NavOption>Shopping bag</NavOption>
+            <MenuLink to="/checkout">Shopping bag</MenuLink>
           </Menu>
         ) : (
           <Menu>
             <MenuLink to="/signin">Sign In</MenuLink>
-            <NavOption>Shopping bag</NavOption>
+            <MenuLink to="/checkout">Shopping bag</MenuLink>
           </Menu>
         )}
       </PrimaryNav>

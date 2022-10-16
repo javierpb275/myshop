@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import LayoutComponent from "./components/layout/layout.component";
+import CheckoutPage from "./pages/checkout/checkout.page";
 import ContactPage from "./pages/contact/contact.page";
 import HomePage from "./pages/home/home.page";
 import SignInPage from "./pages/signin/signin.page";
@@ -21,6 +22,7 @@ function App() {
           ) : null}
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Route>
       </Routes>

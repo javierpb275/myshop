@@ -1,6 +1,8 @@
 import React, { useMemo } from "react";
+import { useDispatch } from "react-redux";
 import { IProduct } from "../../interfaces/product.interface";
 import { Card, Flex, Image, Title, Value } from "./product-card.element";
+import { addToCart, removeFromCart } from "../../store/reducers/cartReducer";
 
 export interface IProductCardComponentProps {
   product: IProduct;
@@ -23,6 +25,7 @@ const ProductCardComponent: React.FunctionComponent<
       ),
     [props.product.price, props.product.discount]
   );
+  const dispatch = useDispatch();
   return (
     <>
       <Flex>
@@ -31,7 +34,18 @@ const ProductCardComponent: React.FunctionComponent<
           <Title>
             <h1>{props.product.name}</h1>
           </Title>
-          <button>Add to cart</button>
+          <button
+            onClick={() =>
+              dispatch(
+                addToCart({ ...props.product, price: newPrice.toString() })
+              )
+            }
+          >
+            Add to cart
+          </button>
+          <button onClick={() => dispatch(removeFromCart(props.product))}>
+            Remove from cart
+          </button>
           <Value>
             {Number(props.product.discount) <= 0 ? (
               <span className="price">${props.product.price}</span>
