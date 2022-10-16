@@ -116,7 +116,7 @@ INSERT INTO products(product_id, name, price,
 image_url, 
 description, stock, discount, sku, created_at, modified_at)
 VALUES (10, 'Mickey Mouse Shoes', 29.62,
-'./images/mickey-mouse-shoes.jpg', 
+'./images/mickey-mouse-shoes.jpeg', 
 NULL, 10, 0.00, 'CH-SH-PI-SM', '2022-09-20 17:53:30.705485', '2022-09-20 17:53:30.705485');
 
 --jackets:
