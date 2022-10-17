@@ -37,7 +37,7 @@ const ProductCheckoutComponent: React.FunctionComponent<
           &#10133;
         </div>
       </QuantityContainer>
-      <TextContainer>{props.cartProduct.price}</TextContainer>
+      <TextContainer>${props.cartProduct.price}</TextContainer>
       <RemoveButtonContainer
         onClick={() => dispatch(removeAllFromCart(props.cartProduct))}
       >

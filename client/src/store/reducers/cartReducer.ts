@@ -6,11 +6,11 @@ export interface IProductInCart extends IProduct {
 }
 
 export interface CartState {
-  cart: IProductInCart[];
+  products: IProductInCart[];
 }
 
 const initialState: CartState = {
-  cart: [],
+  products: [],
 };
 
 export const cartSlice = createSlice({
@@ -18,17 +18,17 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<IProduct>) => {
-      const productInCart = state.cart.find(
+      const productInCart = state.products.find(
         (product) => product.product_id === action.payload.product_id
       );
       if (productInCart) {
         productInCart.quantity++;
       } else {
-        state.cart.push({ ...action.payload, quantity: 1 });
+        state.products.push({ ...action.payload, quantity: 1 });
       }
     },
     removeFromCart: (state, action: PayloadAction<IProduct>) => {
-      const productInCart = state.cart.find(
+      const productInCart = state.products.find(
         (product) => product.product_id === action.payload.product_id
       );
       if (!productInCart) {
@@ -37,17 +37,17 @@ export const cartSlice = createSlice({
       if (productInCart.quantity > 1) {
         productInCart.quantity--;
       } else {
-        const removeProduct = state.cart.filter(
+        const removeProduct = state.products.filter(
           (product) => product.product_id !== action.payload.product_id
         );
-        state.cart = removeProduct;
+        state.products = removeProduct;
       }
     },
     removeAllFromCart: (state, action: PayloadAction<IProduct>) => {
-      const removeProduct = state.cart.filter(
+      const removeProduct = state.products.filter(
         (product) => product.product_id !== action.payload.product_id
       );
-      state.cart = removeProduct;
+      state.products = removeProduct;
     },
   },
 });

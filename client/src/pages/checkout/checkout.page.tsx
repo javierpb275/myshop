@@ -12,11 +12,11 @@ import {
 export interface ICheckoutPageProps {}
 
 const CheckoutPage: React.FunctionComponent<ICheckoutPageProps> = (props) => {
-  const products = useSelector((state: RootState) => state.cart.cart);
+  const products = useSelector((state: RootState) => state.cart.products);
   const total = useMemo(
     () =>
       products.reduce((total, product) => {
-        total += Number(product.price);
+        total += Number(product.price) * product.quantity;
         return total;
       }, 0),
     [products]
