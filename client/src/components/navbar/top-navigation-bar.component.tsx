@@ -8,48 +8,43 @@ const TopNavbarComponent: React.FunctionComponent<ITopNavbarComponentProps> = (
   props
 ) => {
   const navigate = useNavigate();
+  const searchFor = (category: string) => {
+    navigate(`/products/${category}`);
+    window.location.reload();
+  };
   return (
     <div>
       <div className={classes.dropdown}>
-        <button
-          className={classes.dropbtn}
-          onClick={() => navigate("/products/me-")}
-        >
+        <button className={classes.dropbtn} onClick={() => searchFor("me-")}>
           Men
         </button>
         <div className={classes.dropdownContent}>
-          <p onClick={() => navigate("/products/me-sh-")}>Shoes</p>
-          <p onClick={() => navigate("/products/me-ja-")}>Jackets</p>
-          <p onClick={() => navigate("/products/me-ts-")}>T-Shirts</p>
-          <p onClick={() => navigate("/products/me-tr-")}>Trousers</p>
+          <p onClick={() => searchFor("me-sh-")}>Shoes</p>
+          <p onClick={() => searchFor("me-ja-")}>Jackets</p>
+          <p onClick={() => searchFor("me-ts-")}>T-Shirts</p>
+          <p onClick={() => searchFor("me-tr-")}>Trousers</p>
         </div>
       </div>
       <div className={classes.dropdown}>
-        <button
-          className={classes.dropbtn}
-          onClick={() => navigate("/products/wm-")}
-        >
+        <button className={classes.dropbtn} onClick={() => searchFor("wm-")}>
           Women
         </button>
         <div className={classes.dropdownContent}>
-          <p onClick={() => navigate("/products/wm-sh-")}>Shoes</p>
-          <p onClick={() => navigate("/products/wm-ja-")}>Jackets</p>
-          <p onClick={() => navigate("/products/wm-ts-")}>T-Shirts</p>
-          <p onClick={() => navigate("/products/wm-tr-")}>Trousers</p>
+          <p onClick={() => searchFor("wm-sh-")}>Shoes</p>
+          <p onClick={() => searchFor("wm-ja-")}>Jackets</p>
+          <p onClick={() => searchFor("wm-ts-")}>T-Shirts</p>
+          <p onClick={() => searchFor("wm-tr-")}>Trousers</p>
         </div>
       </div>
       <div className={classes.dropdown}>
-        <button
-          className={classes.dropbtn}
-          onClick={() => navigate("/products/ch-")}
-        >
+        <button className={classes.dropbtn} onClick={() => searchFor("ch-")}>
           Children
         </button>
         <div className={classes.dropdownContent}>
-          <p onClick={() => navigate("/products/ch-sh-")}>Shoes</p>
-          <p onClick={() => navigate("/products/ch-ja-")}>Jackets</p>
-          <p onClick={() => navigate("/products/ch-ts-")}>T-Shirts</p>
-          <p onClick={() => navigate("/products/ch-tr-")}>Trousers</p>
+          <p onClick={() => searchFor("ch-sh-")}>Shoes</p>
+          <p onClick={() => searchFor("ch-ja-")}>Jackets</p>
+          <p onClick={() => searchFor("ch-ts-")}>T-Shirts</p>
+          <p onClick={() => searchFor("ch-tr-")}>Trousers</p>
         </div>
       </div>
     </div>
