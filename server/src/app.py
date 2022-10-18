@@ -9,6 +9,7 @@ from config.blocklist import BLOCKLIST
 from flask_cors import CORS
 from resources.product_resource import Product, ProductList, ProductListBySku
 from resources.user_resource import Profile, UserSignIn, TokenRefresh, UserSignOut, UserSignUp
+from resources.favourite_resource import Favourite
 
 # app configuration
 app = Flask(__name__)
@@ -87,6 +88,9 @@ api.add_resource(Profile, '/api/users/me')
 api.add_resource(Product, '/api/products/<int:product_id>')
 api.add_resource(ProductList, '/api/products')
 api.add_resource(ProductListBySku, '/api/products/search/<string:sku>')
+
+# favourites routes
+api.add_resource(Favourite, '/api/favourites/<int:product_id>')
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)

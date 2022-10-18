@@ -31,6 +31,16 @@ CREATE TABLE products(
     modified_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+--FAVOURITES TABLE
+CREATE TABLE favourites(
+    favourite_id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users (user_id) ON DELETE CASCADE,
+    product_id INTEGER REFERENCES products (product_id) ON DELETE CASCADE,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    modified_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
+    --CONSTRAINT favourite_pkey PRIMARY KEY (user_id, product_id)
+);
+
 --USERS
 INSERT INTO users(user_id, role, username, email, 
 password, avatar, first_name, last_name, phone, address, accept_terms_conditions, created_at, modified_at)

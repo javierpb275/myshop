@@ -21,6 +21,8 @@ class UserModel(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now())
     modified_at = db.Column(db.DateTime, default=datetime.now())
 
+    favourites = db.relationship('FavouriteModel', lazy='dynamic')
+
     def __init__(self, username, email, password, accept_terms_conditions, role, created_at, modified_at, first_name, last_name, phone, address, avatar):
         self.username = username
         self.email = email
@@ -46,7 +48,8 @@ class UserModel(db.Model):
             'first_name': self.first_name,
             'last_name': self.last_name,
             'phone': self.phone,
-            'address': self.address
+            'address': self.address,
+            'favourites': [favourite.json() for favourite in self.favourites.all()]
         }
 
     def save_to_db(self):
